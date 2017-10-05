@@ -7,3 +7,5 @@ deploy:
  api-key:
   secure: $HEROKU_API_KEY
  app: simple-web-app-with-ci
+ on:
+  all_branches: true
