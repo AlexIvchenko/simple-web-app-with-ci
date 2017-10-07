@@ -6,7 +6,7 @@
     <groupId>com.github.alexivchenko</groupId>
     <artifactId>simple-web-app-with-ci</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>simple-web-app-with-ci</name>
     <description></description>
 
