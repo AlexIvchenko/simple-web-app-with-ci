@@ -5,8 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class SimpleWebAppWithCiApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(SimpleWebAppWithCiApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SimpleWebAppWithCiApplication.class, args);
+    }
 }
