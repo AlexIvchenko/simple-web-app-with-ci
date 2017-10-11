@@ -1,4 +1,4 @@
-package com.github.alexivchenko.simplewebappwithci.config;
+package com.github.alexivchenko.simplewebappwithci.spring;
 
 import com.github.alexivchenko.simplewebappwithci.model.User;
 import com.github.alexivchenko.simplewebappwithci.repository.UserRepository;

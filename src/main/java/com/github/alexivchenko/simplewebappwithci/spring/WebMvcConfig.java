@@ -1,4 +1,4 @@
-package com.github.alexivchenko.simplewebappwithci.config;
+package com.github.alexivchenko.simplewebappwithci.spring;
 
 import com.github.alexivchenko.simplewebappwithci.web.validation.EmailValidator;
 import com.github.alexivchenko.simplewebappwithci.web.validation.NotEmptyStringValidator;
