@@ -1,8 +1,8 @@
 package com.github.alexivchenko.simplewebappwithci.config;
 
-import com.github.alexivchenko.simplewebappwithci.controller.validation.EmailValidator;
-import com.github.alexivchenko.simplewebappwithci.controller.validation.NotEmptyStringValidator;
-import com.github.alexivchenko.simplewebappwithci.controller.validation.PasswordMatchesValidator;
+import com.github.alexivchenko.simplewebappwithci.web.validation.EmailValidator;
+import com.github.alexivchenko.simplewebappwithci.web.validation.NotEmptyStringValidator;
+import com.github.alexivchenko.simplewebappwithci.web.validation.PasswordMatchesValidator;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

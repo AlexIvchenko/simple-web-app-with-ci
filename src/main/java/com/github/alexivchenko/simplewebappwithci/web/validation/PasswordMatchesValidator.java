@@ -1,6 +1,6 @@
-package com.github.alexivchenko.simplewebappwithci.controller.validation;
+package com.github.alexivchenko.simplewebappwithci.web.validation;
 
-import com.github.alexivchenko.simplewebappwithci.controller.dto.UserDto;
+import com.github.alexivchenko.simplewebappwithci.web.dto.UserDto;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

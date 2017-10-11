@@ -1,6 +1,6 @@
-package com.github.alexivchenko.simplewebappwithci.controller;
+package com.github.alexivchenko.simplewebappwithci.web.controller;
 
-import com.github.alexivchenko.simplewebappwithci.controller.dto.UserDto;
+import com.github.alexivchenko.simplewebappwithci.web.dto.UserDto;
 import com.github.alexivchenko.simplewebappwithci.model.User;
 import com.github.alexivchenko.simplewebappwithci.service.UserService;
 import com.github.alexivchenko.simplewebappwithci.service.UsernameExistsException;

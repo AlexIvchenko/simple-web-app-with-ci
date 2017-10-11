@@ -1,4 +1,4 @@
-package com.github.alexivchenko.simplewebappwithci.controller.validation;
+package com.github.alexivchenko.simplewebappwithci.web.validation;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

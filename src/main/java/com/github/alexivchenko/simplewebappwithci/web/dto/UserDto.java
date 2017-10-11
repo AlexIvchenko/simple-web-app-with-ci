@@ -1,8 +1,8 @@
-package com.github.alexivchenko.simplewebappwithci.controller.dto;
+package com.github.alexivchenko.simplewebappwithci.web.dto;
 
-import com.github.alexivchenko.simplewebappwithci.controller.validation.NotEmptyString;
-import com.github.alexivchenko.simplewebappwithci.controller.validation.PasswordMatches;
-import com.github.alexivchenko.simplewebappwithci.controller.validation.ValidEmail;
+import com.github.alexivchenko.simplewebappwithci.web.validation.NotEmptyString;
+import com.github.alexivchenko.simplewebappwithci.web.validation.PasswordMatches;
+import com.github.alexivchenko.simplewebappwithci.web.validation.ValidEmail;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;

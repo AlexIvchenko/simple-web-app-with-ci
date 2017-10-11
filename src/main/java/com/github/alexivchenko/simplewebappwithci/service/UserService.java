@@ -1,6 +1,6 @@
 package com.github.alexivchenko.simplewebappwithci.service;
 
-import com.github.alexivchenko.simplewebappwithci.controller.dto.UserDto;
+import com.github.alexivchenko.simplewebappwithci.web.dto.UserDto;
 import com.github.alexivchenko.simplewebappwithci.model.User;
 
 /**
