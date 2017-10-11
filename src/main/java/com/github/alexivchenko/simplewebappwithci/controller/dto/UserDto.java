@@ -15,7 +15,7 @@ import javax.validation.constraints.Size;
 public @Data class UserDto {
     @NotNull
     @NotEmptyString
-    @Size(min = 6, max = 30, message = "{NotEmpty.user.username}")
+    @Size(min = 6, max = 30, message = "{Size.User.Username}")
     private String username;
 
     @NotNull
