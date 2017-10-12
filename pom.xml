@@ -105,6 +105,7 @@
     </dependencies>
 
     <build>
+        <finalName>simple-web-app-with-ci</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

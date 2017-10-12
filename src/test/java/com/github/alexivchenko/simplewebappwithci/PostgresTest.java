@@ -11,8 +11,8 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@ActiveProfiles("prod")
-public class ProdProfileTest {
+@ActiveProfiles("db")
+public class PostgresTest {
     @Test
     public void contextLoads() {
     }
