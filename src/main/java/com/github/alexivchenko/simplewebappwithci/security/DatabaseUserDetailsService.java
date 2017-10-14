@@ -18,14 +18,15 @@ public class DatabaseUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        try {
-            User user = repository.findByUsername(username);
-            if (user == null) {
-                throw new UsernameNotFoundException(username);
-            }
-            return new CustomUserDetails(user);
-        } catch (Exception e) {
-            throw new UsernameNotFoundException(username, e);
+        User user = repository.findByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException(
+                    "No user found with username: "+ username);
         }
+        return  org.springframework.security.core.userdetails.User
+                .withUsername(user.getUsername())
+                .password(user.getPassword())
+                .authorities("USER")
+                .build();
     }
 }

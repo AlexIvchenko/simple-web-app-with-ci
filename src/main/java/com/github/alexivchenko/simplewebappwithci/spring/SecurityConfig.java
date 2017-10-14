@@ -1,4 +1,4 @@
-package com.github.alexivchenko.simplewebappwithci.config;
+package com.github.alexivchenko.simplewebappwithci.spring;
 
 import com.github.alexivchenko.simplewebappwithci.model.User;
 import com.github.alexivchenko.simplewebappwithci.repository.UserRepository;
@@ -60,7 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/home").permitAll()
+                .antMatchers("/", "/home", "/registration").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

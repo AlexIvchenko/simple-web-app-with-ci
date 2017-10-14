@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header-css"></div>
+    <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII"/>
+    <title th:text="#{label.pages.home.title}">home</title>
+</head>
+<body>
+<div class="container">
+    <h1 class="alert alert-success" th:text="#{message.regSucc}">success</h1>
+    <a th:href="@{/login}" th:text="#{label.login}">login</a>
+</div>
+</body>
+</html>

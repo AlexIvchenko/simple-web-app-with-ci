@@ -2,8 +2,16 @@ language: java
 jdk:
  - oraclejdk8
 sudo: false
+services:
+ - postgresql
+before_script:
+ - psql -c "CREATE DATABASE test_db;" -U postgres
+script:
+ - mvn clean integration-test
 deploy:
  provider: heroku
  api-key:
   secure: $HEROKU_API_KEY
- app: simple-web-app-with-ci
+ app:
+  master: simple-web-app-with-ci
+  dev: simple-web-app-with-ci-dev
