@@ -24,7 +24,7 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder builder, UserRepository repository) {
-        builder.authenticationProvider(authenticationProvider(repository));
+        builder.authenticationProvider(authenticationProvider());
         User user = new User();
         user.setUsername("Alex");
         user.setPassword(passwordEncoder().encode("123"));
@@ -32,18 +32,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    @Autowired
-    public AuthenticationProvider authenticationProvider(UserRepository repository) {
+    public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setUserDetailsService(userDetailsService(repository));
+        provider.setUserDetailsService(userDetailsService());
         provider.setPasswordEncoder(passwordEncoder());
         return provider;
     }
 
     @Bean
-    @Autowired
-    public UserDetailsService userDetailsService(UserRepository repository) {
-        return new DatabaseUserDetailsService(repository);
+    public UserDetailsService userDetailsService() {
+        return new DatabaseUserDetailsService();
     }
 
     @Bean

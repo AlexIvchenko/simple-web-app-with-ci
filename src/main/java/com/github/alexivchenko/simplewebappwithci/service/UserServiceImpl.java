@@ -14,12 +14,16 @@ import javax.transaction.Transactional;
  */
 @Service
 public class UserServiceImpl implements UserService {
-    private final UserRepository repository;
-    private final PasswordEncoder passwordEncoder;
+    private UserRepository repository;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceImpl(UserRepository repository, PasswordEncoder passwordEncoder) {
+    public void setRepository(UserRepository repository) {
         this.repository = repository;
+    }
+
+    @Autowired
+    public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
     }
 

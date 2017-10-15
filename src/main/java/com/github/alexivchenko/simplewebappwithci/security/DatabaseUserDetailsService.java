@@ -2,6 +2,7 @@ package com.github.alexivchenko.simplewebappwithci.security;
 
 import com.github.alexivchenko.simplewebappwithci.model.User;
 import com.github.alexivchenko.simplewebappwithci.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -10,9 +11,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
  * @author Alex Ivchenko
  */
 public class DatabaseUserDetailsService implements UserDetailsService {
-    private final UserRepository repository;
+    private UserRepository repository;
 
-    public DatabaseUserDetailsService(UserRepository repository) {
+    @Autowired
+    public void setRepository(UserRepository repository) {
         this.repository = repository;
     }
 
