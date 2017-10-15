@@ -1,6 +1,5 @@
 package com.github.alexivchenko.simplewebappwithci.spring;
 
-import com.github.alexivchenko.simplewebappwithci.model.User;
 import com.github.alexivchenko.simplewebappwithci.repository.UserRepository;
 import com.github.alexivchenko.simplewebappwithci.security.DatabaseUserDetailsService;
 import com.github.alexivchenko.simplewebappwithci.security.error.MyAccessDeniedHandler;
@@ -16,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 
 /**
  * @author Alex Ivchenko
@@ -25,10 +25,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder builder, UserRepository repository) {
         builder.authenticationProvider(authenticationProvider());
-        User user = new User();
-        user.setUsername("Alex");
-        user.setPassword(passwordEncoder().encode("123"));
-        repository.save(user);
     }
 
     @Bean
@@ -57,17 +53,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/", "/home", "/registration").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll()
-                .and()
-                .exceptionHandling().accessDeniedHandler(accessDeniedHandler());
+                .exceptionHandling().authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login")).accessDeniedPage("/accessDenied")
+                .and().authorizeRequests()
+                .antMatchers("/VAADIN/**", "/PUSH/**", "/UIDL/**", "/login", "/login/**", "/error/**", "/accessDenied/**", "/vaadinServlet/**").permitAll()
+                .antMatchers("/authorized", "/**").fullyAuthenticated()
+                .and().logout()
+                .logoutUrl("/logout");
     }
 }

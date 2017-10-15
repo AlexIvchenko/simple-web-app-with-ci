@@ -36,7 +36,7 @@ public @Data class UserDto {
 
     @Size(min = 6, max = 30, message = "{validation.error.size}")
     @NotEmptyString
-    private String matchingPassword;
+    private String confirmPassword;
 
     @NotNull
     @NotEmptyString
