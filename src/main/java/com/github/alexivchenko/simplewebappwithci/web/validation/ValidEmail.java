@@ -12,12 +12,12 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 /**
  * @author Alex Ivchenko
  */
-@Target({TYPE, FIELD, ANNOTATION_TYPE})
+@Target({FIELD})
 @Retention(RUNTIME)
 @Constraint(validatedBy = EmailValidator.class)
 @Documented
 public @interface ValidEmail {
-    String message() default "Invalid email";
+    String message();
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

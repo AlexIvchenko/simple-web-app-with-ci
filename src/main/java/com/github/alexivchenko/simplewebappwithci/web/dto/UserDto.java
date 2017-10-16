@@ -25,7 +25,6 @@ public @Data class UserDto {
 
     @NotNull
     @NotEmptyString
-    @ValidEmail
     @Size(min = 6, max = 30, message = "{validation.error.size}")
     private String lastName;
 
@@ -39,6 +38,7 @@ public @Data class UserDto {
     private String confirmPassword;
 
     @NotNull
+    @ValidEmail(message = "{ValidEmail.User.email}")
     @NotEmptyString
     private String email;
 }
