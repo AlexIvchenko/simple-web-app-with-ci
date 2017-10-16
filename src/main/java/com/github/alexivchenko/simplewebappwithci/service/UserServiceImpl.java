@@ -3,12 +3,15 @@ package com.github.alexivchenko.simplewebappwithci.service;
 import com.github.alexivchenko.simplewebappwithci.model.User;
 import com.github.alexivchenko.simplewebappwithci.repository.UserRepository;
 import com.github.alexivchenko.simplewebappwithci.web.dto.UserDto;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +21,7 @@ import javax.transaction.Transactional;
  * @author Alex Ivchenko
  */
 @Service
+@Slf4j
 public class UserServiceImpl implements UserService {
     private UserRepository repository;
     private PasswordEncoder passwordEncoder;
@@ -36,6 +40,15 @@ public class UserServiceImpl implements UserService {
     @Autowired
     public void setDaoAuthenticationProvider(AuthenticationProvider authenticationProvider) {
         this.authenticationProvider = authenticationProvider;
+    }
+
+    @Override
+    public User currentUser() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth == null || (auth instanceof AnonymousAuthenticationToken)) {
+            return null;
+        }
+        return repository.findByUsername(((UserDetails) auth.getPrincipal()).getUsername());
     }
 
     @Transactional
@@ -57,6 +70,8 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public void signIn(String username, String password) {
+        log.info("signing in: " + username);
+        log.info("db user: " + repository.findByUsername(username));
         AbstractAuthenticationToken token = new UsernamePasswordAuthenticationToken(username, password);
         Authentication auth = authenticationProvider.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(auth);
